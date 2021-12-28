@@ -1,15 +1,14 @@
 # android_battery_optimization
 
-A new flutter plugin project.
+Battery Optimization can only be disabled by the user so this plugin can check whether it's disabled and open the setting page if it's not.
 
-## Getting Started
+```dart
+final isIgnoringBatOp = await AndroidBatteryOptimization.isIgnoringBatteryOptimizations;
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+if (!isIgnoringBatOp) {
+    // you can show a dialog here to ask the user for
+    // permission before opening the settings page
+    await AndroidBatteryOptimization.openBatteryOptimizationSetting(showToast: true);
+}
+```
 
